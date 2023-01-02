@@ -1,5 +1,5 @@
 /*                      CONST
-* 뜻            : Compile-Time Variable
+* 뜻            : Compile-Time immutable Variable
 * 주의          : final과 다른 의미를 가짐
 * Compile-Time  : 앱스토어에 올리기 전에 사용되는 immutable 변수
  */
