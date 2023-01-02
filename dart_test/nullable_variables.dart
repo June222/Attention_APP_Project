@@ -8,17 +8,17 @@
 * 사용 방법    : if 조건문을 통해 null이 아님을 확인하고, method 사용
 */
 
-void main(){
+void main() {
   String _var = '_var is non-nullable';
-  // _var = null; => 컴파일 단계에서 Error 발생, 문제 예방 가능
+  //_var = null; //=> 컴파일 단계에서 Error 발생, 문제 예방 가능
 
   String? _var1 = '_var1 is nullable';
   _var1 = null;
 
-  if(_var1 != null){ // 이렇게 명시적으로 확인하여 사용하여야함.
+  if (_var1 != null) {
+    // 이렇게 명시적으로 확인하여 사용하여야함.
     _var1.isNotEmpty;
   }
   // same as
   _var1?.isNotEmpty;
-
 }
