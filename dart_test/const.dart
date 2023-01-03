@@ -6,5 +6,5 @@
 
 void main() {
   const max_allowed_value = 123; // Compile-Time Variable
-  final API = getAPIFromUser(); // 사용자에게 요청 받아 쓰는 것은 non-Compile-Time
+  // final API = getAPIFromUser(); // 사용자에게 요청 받아 쓰는 것은 non-Compile-Time
 }
