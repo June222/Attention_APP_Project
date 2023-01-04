@@ -22,6 +22,15 @@
  *            } 
  */
 
+/**                                 OVERRIDE
+ * 뜻     : 명시적으로 이미 정의된 Method를 재정의한다는 것을 알림 
+ * 
+ * 사용 방법 : 재정의하고자하는 Method위에 @override를 써서 명시적으로 알림
+ * 사용 이유 : 기존 Method에 내용을 추가하고 싶거나 수정하고 싶을 때, super와 함께 쓰임
+ * 사용 예시 : @override
+ *            void already_Defined_Method_Name(...){...};
+ */
+
 class Human {
   final String name;
   Human(this.name);
@@ -40,7 +49,7 @@ class Player extends Human {
     required String name, // 이 부분을 this로 받을 수 없음.
   }) : super(name); // ## positional parameter
 
-  @override
+  @override // 재정의
   void sayHello() {
     super.sayHello();
     print('and I Play for ${team}');
