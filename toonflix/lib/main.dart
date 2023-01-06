@@ -5,16 +5,19 @@
 
 /**               [Scaffold]
  * 뜻 : 화면 밖으로 위젯이 나가지 않게 해주는 기본 뼈대
+ * 사용 상황: 항상 사용하여야한다.
  * 사용 예시 : home:Scaffold(backgroundColor:..., body:...)
  */
 
 /**               [Padding]
  * 뜻 : Widget의 바깥으로 여유 공간을 두는 것.
+ * 사용 상황 : 화면에 너무 가까이에 Widget이 있어 미관상 좋지 않을 때,
  * 사용 예시 : Padding(padding:EdgeInset.symmetric(horizontal or vertical): _size)
  */
 
 /**               [Row, Column]
- * 뜻 : 위젯의 수평(Row), 수직(Column)으로 연달아 넣고 싶을 때,
+ * 뜻 : 여러 개의 Widget을 담는 Widget
+ * 사용 상황: 한 Widget안에 여러 Widget을 수직적으로 혹은 수평적으로 넣고 싶을 때,
  * 사용 예시 : Row(mainAxisAlignment(정렬 위치) : ..., child:[_Widget, ...], ...)
  *        주의 : mainAxisAlignment는 방향이 다르다.
  * Row의 mainAxisAlignment는 가로 방향 정렬이고, crossAxisAlignment는 세로 방향 정렬,
@@ -23,8 +26,15 @@
  */
 
 /**               [Text]
- * 뜻 : 원하는 텍스트를 보여줄 Widget
+ * 뜻 : 텍스트를 보여줄 Widget
+ * 사용 상황 : 사용자에게 알림, 설명을 위한 Text를 띄워야 할 때,
  * 사용 예시 : Text("__text...", _property: ...)
+ */
+
+/**               [SizedBox]
+ * 뜻 : 공간을 차지하는 Box
+ * 사용 상황 : 일회적으로 여분의 공간을 남기고 싶을 때,
+ * 사용 예시 : SizedBox(height: _size), Row(...)
  */
 
 import 'package:flutter/material.dart';
