@@ -8,6 +8,10 @@
  * 사용 예시 : home:Scaffold(backgroundColor:..., body:...)
  */
 
+/**               Padding
+ * 뜻 : Widget의 바깥으로 여유 공간을 두는 것.
+ * 사용 예시 : Padding(padding:EdgeInset.symmetric(horizontal or vertical): _size)
+ */
 import 'package:flutter/material.dart';
 
 void main() {
