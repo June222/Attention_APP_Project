@@ -17,6 +17,12 @@
 /// 사용 예시 : child: IconButton(onPressed: _functionName, icon: Icon(Icons._iconName, ..), ..)
 ///
 
+///                           [setState()]
+/// 뜻 : UI 새로고침하기
+/// 사용 상황 : 변경된 Data의 값을 이용하여 User에게 보여주고 싶을 때
+/// 사용 예시 : _functionOnPressed(){setState((){_data = _newData;});}
+///
+
 import "package:flutter/material.dart";
 
 void main() {
@@ -34,7 +40,9 @@ class _AppState extends State<App> {
   int counter = 0;
 
   void onClicked() {
-    counter++;
+    setState(() {
+      counter++;
+    });
   }
 
   @override
