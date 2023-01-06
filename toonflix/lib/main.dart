@@ -93,6 +93,14 @@
 /// #hardEdge는 overflow된 Widget을 안 보이게 처리함.
 ///
 
+///                       [Transform]
+/// 뜻 : Widget의 크기나 위치를 변형하는 Widget
+/// 사용 상황 : 다른 요소의 변형없이 원하는 Widget만 변형하고 싶을 때,
+/// 사용 예시 :Transform._transformOption(optionName:_option, child:_Widget(...), ..)
+/// # Transform.scale(scale: ...)은 배율 변경
+/// # Transform.translate(offset: Offset(_x,_y), ...)는 위치 변경
+///
+
 import 'package:flutter/material.dart';
 import 'package:toonflix/widgets/button.dart';
 
