@@ -32,9 +32,23 @@
  */
 
 /**               [SizedBox]
- * 뜻 : 공간을 차지하는 Box
+ * 뜻 : 공간을 차지하는 Box인 Widget
  * 사용 상황 : 일회적으로 여분의 공간을 남기고 싶을 때,
  * 사용 예시 : SizedBox(height: _size), Row(...)
+ */
+
+/**               [Color(s)]
+ * 뜻 : 색상을 나타내는 Class
+ * 사용 상황: 배경색이나, 글자색 등을 변경할 때 style과 같이 쓰임
+ * 
+ * 사용 에시 1
+ * (제공하는 색을 쓰고 싶을 때) :  color: Colors.### #는 색상 이름
+ * 사용 예시 2
+ * (customized된 색을 쓰고 싶을 때) : color : Color(0xFF######) #는 색번호
+ * 사용 예시 3
+ * (customized된 색을 쓰고 싶을 때) : color : Color.ARGB(255,#,#,#) #는 순서대로 RGB 값
+ * 사용 예시 4
+ * (customized된 색을 쓰고 싶을 때) : color : Color(RGBO(#,#,#,$)) #는 순서대로 RGB 값, $는 투명도 값(0~1)
  */
 
 import 'package:flutter/material.dart';
