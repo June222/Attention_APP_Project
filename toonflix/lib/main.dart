@@ -23,6 +23,12 @@
 /// 사용 예시 : _functionOnPressed(){setState((){_data = _newData;});}
 ///
 
+///                           [Collection for]
+/// 뜻 : for문을 이용하여, class 생성하기
+/// 사용 상황 : interactive하게 Widget의 수를 늘리고 싶을 때
+/// 사용 예시 : for(var _n in _List) _Widget(_property: ...)
+///
+
 import "package:flutter/material.dart";
 
 void main() {
