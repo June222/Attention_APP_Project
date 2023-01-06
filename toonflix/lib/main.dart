@@ -16,6 +16,10 @@
 /**               [Row, Column]
  * 뜻 : 위젯의 수평(Row), 수직(Column)으로 연달아 넣고 싶을 때,
  * 사용 예시 : Row(mainAxisAlignment(정렬 위치) : ..., child:[_Widget, ...], ...)
+ *        주의 : mainAxisAlignment는 방향이 다르다.
+ * Row의 mainAxisAlignment는 가로 방향 정렬이고, crossAxisAlignment는 세로 방향 정렬,
+ * Column의 mainAxisAlignment는 세로 방향 정렬이고, crossAxisAlignment는 가로 방향 정렬이다.
+ * 
  */
 
 /**               [Text]
