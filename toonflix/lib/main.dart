@@ -86,6 +86,13 @@
 /// 사용 예시 : Widget: Icon(Icons._iconName, property: _property)
 ///
 
+///                         [clipBehavior]
+/// 뜻 : Widget을 벗어나는 요소들을 어떻게 처리할 것인가를 정하는 property
+/// 사용 상황 : Icon을 Widget에 넘치게 표현하고자 할 때,
+/// 사용 예시 : Container(clipBehavior: Clip._clipOption, ...)
+/// #hardEdge는 overflow된 Widget을 안 보이게 처리함.
+///
+
 import 'package:flutter/material.dart';
 import 'package:toonflix/widgets/button.dart';
 
