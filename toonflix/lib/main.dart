@@ -3,6 +3,11 @@
  * 예시 : Text, Row, Padding, ...
  */
 
+/**               Scaffold
+ * 뜻 : 화면 밖으로 위젯이 나가지 않게 해주는 기본 뼈대
+ * 사용 예시 : home:Scaffold(backgroundColor:..., body:...)
+ */
+
 import 'package:flutter/material.dart';
 
 void main() {
