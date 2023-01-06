@@ -12,6 +12,12 @@
  * 뜻 : Widget의 바깥으로 여유 공간을 두는 것.
  * 사용 예시 : Padding(padding:EdgeInset.symmetric(horizontal or vertical): _size)
  */
+
+/**               Row, Column
+ * 뜻 : 위젯의 수평(Row), 수직(Column)으로 연달아 넣고 싶을 때,
+ * 사용 예시 : Row(mainAxisAlignment(정렬 위치) : ..., child:[_Widget, ...], ...)
+ */
+
 import 'package:flutter/material.dart';
 
 void main() {
