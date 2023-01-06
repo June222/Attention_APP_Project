@@ -1,3 +1,13 @@
+///                   [StatefulWidget]
+/// 뜻 : interactive한 UI를 생성하는 Widget
+///
+/// [중요] StatelessWidget과의 구분:
+///   변경되지 않는 Data를 이용한 UI를 사용하려면 State"less"Widget을 (""는 빼고)
+///   변경되는 Data(State)를 이용하여 User의 입력에 interactive한 UI를 사용하려면 StatefulWidget을 사용
+///
+/// 생성 방법 : st 입력 후 자동완성 기능을 이용하여 Flutter StatefulWidget 선택
+/// 구성 : 1. Widget 자체(코드 변경 필요 없음), 2. State(보여줄 UI, Data를 여기에 작성)
+///
 import "package:flutter/material.dart";
 
 void main() {
