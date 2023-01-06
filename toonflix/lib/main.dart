@@ -4,13 +4,13 @@
  */
 
 /**               [Scaffold]
- * 뜻 : 화면 밖으로 위젯이 나가지 않게 해주는 기본 뼈대
+ * 뜻 : 화면 밖으로 위젯이 나가지 않게 해주는 기본 뼈대 Widget
  * 사용 상황: 항상 사용하여야한다.
  * 사용 예시 : home:Scaffold(backgroundColor:..., body:...)
  */
 
 /**               [Padding]
- * 뜻 : Widget의 바깥으로 여유 공간을 두는 것.
+ * 뜻 : Widget의 바깥으로 여유 공간을 두는 Widget.
  * 사용 상황 : 화면에 너무 가까이에 Widget이 있어 미관상 좋지 않을 때,
  * 사용 예시 : Padding(padding:EdgeInset.symmetric(horizontal or vertical): _size)
  */
@@ -51,12 +51,11 @@
  * (customized된 색을 쓰고 싶을 때) : color: Color(RGBO(#,#,#,$)) #는 순서대로 RGB 값, $는 투명도 값(0~1)
  */
 
-/**                     [Container]
- * 뜻 : 하나의 개별적인 요소를 만들 때 쓰는 Widget
- * 사용 상황 : 버튼처럼 하나의 독립적인 기능을 하는 요소를 만들고 싶을 때 씀.
- * 
- * 사용 예시 : child: Container(_property: ..., child: _Widget)
- */
+/// [Container]
+/// 뜻 : 하나의 개별적인 요소를 만들 때 쓰는 Widget
+/// 사용 상황 : 버튼처럼 하나의 독립적인 기능을 하는 요소를 만들고 싶을 때 씀.
+/// 사용 예시 : child: Container(_property: ..., child: _Widget)
+/// */
 
 import 'package:flutter/material.dart';
 
@@ -76,7 +75,7 @@ class App extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         // 기본 뼈대
-        backgroundColor: Color(0xFF181818),
+        backgroundColor: const Color(0xFF181818),
         body: Padding(
           padding: const EdgeInsets.symmetric(
             horizontal: 20,
@@ -84,7 +83,7 @@ class App extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(
+              const SizedBox(
                 height: 80,
               ),
               Row(
@@ -93,7 +92,7 @@ class App extends StatelessWidget {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
-                      Text(
+                      const Text(
                         "Hey, Selena",
                         style: TextStyle(
                           color: Colors.white,
@@ -112,7 +111,7 @@ class App extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 120,
               ),
               Text(
@@ -122,10 +121,10 @@ class App extends StatelessWidget {
                   color: Colors.white.withOpacity(0.8),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 5,
               ),
-              Text(
+              const Text(
                 "\$5 194 482",
                 style: TextStyle(
                   fontSize: 45,
@@ -133,17 +132,17 @@ class App extends StatelessWidget {
                   color: Colors.white,
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 30,
               ),
               Row(
                 children: [
                   Container(
                     decoration: BoxDecoration(
-                      color: Color(0xFFF2B33A),
+                      color: const Color(0xFFF2B33A),
                       borderRadius: BorderRadius.circular(45),
                     ),
-                    child: Padding(
+                    child: const Padding(
                       padding: EdgeInsets.symmetric(
                         vertical: 20,
                         horizontal: 50,
@@ -158,10 +157,10 @@ class App extends StatelessWidget {
                   ),
                   Container(
                     decoration: BoxDecoration(
-                      color: Color(0xFF1C1D1E),
+                      color: const Color(0xFF1C1D1E),
                       borderRadius: BorderRadius.circular(45),
                     ),
-                    child: Padding(
+                    child: const Padding(
                       padding:
                           EdgeInsets.symmetric(vertical: 20, horizontal: 50),
                       child: Text(
