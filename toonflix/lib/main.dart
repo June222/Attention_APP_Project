@@ -78,6 +78,13 @@
 /// 사용 방법 2 : Code Action의 Extract Widget을 이용하기
 ///
 /// 사용 예시 : lib/Widgets/button.dart 참조
+///
+
+///                       [Icon]
+/// 뜻 : Icon를 나타낼 수 있는 Widget
+/// 사용 상황 : 나타내고자하는 img 파일이 있을 때
+/// 사용 예시 : Widget: Icon(Icons._iconName, property: _property)
+///
 
 import 'package:flutter/material.dart';
 import 'package:toonflix/widgets/button.dart';
