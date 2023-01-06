@@ -1,21 +1,26 @@
-/**               Widget
+/**               [Widget]
  * 뜻 : 사실상 화면의 모든 UI들은 각각이 모두 Widget임.
  * 예시 : Text, Row, Padding, ...
  */
 
-/**               Scaffold
+/**               [Scaffold]
  * 뜻 : 화면 밖으로 위젯이 나가지 않게 해주는 기본 뼈대
  * 사용 예시 : home:Scaffold(backgroundColor:..., body:...)
  */
 
-/**               Padding
+/**               [Padding]
  * 뜻 : Widget의 바깥으로 여유 공간을 두는 것.
  * 사용 예시 : Padding(padding:EdgeInset.symmetric(horizontal or vertical): _size)
  */
 
-/**               Row, Column
+/**               [Row, Column]
  * 뜻 : 위젯의 수평(Row), 수직(Column)으로 연달아 넣고 싶을 때,
  * 사용 예시 : Row(mainAxisAlignment(정렬 위치) : ..., child:[_Widget, ...], ...)
+ */
+
+/**               [Text]
+ * 뜻 : 원하는 텍스트를 보여줄 Widget
+ * 사용 예시 : Text("__text...", _property: ...)
  */
 
 import 'package:flutter/material.dart';
