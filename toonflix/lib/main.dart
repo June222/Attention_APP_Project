@@ -101,6 +101,12 @@
 /// # Transform.translate(offset: Offset(_x,_y), ...)는 위치 변경
 ///
 
+///                         [SingleChildScrollView]
+/// 뜻 : 화면에서 넘치는 부분을 스크롤하여 볼 수 있게 해주는 Widget
+/// 사용 상황 : 긴 화면을 만들어서 스크롤해서 모두 볼 수 있게 하고싶을 때
+/// 사용 예시 : body:SingleChildScrollView(child: _Widget(...), ..)
+///
+
 import 'package:flutter/material.dart';
 import 'package:toonflix/widgets/button.dart';
 import 'package:toonflix/widgets/currency_card.dart';
