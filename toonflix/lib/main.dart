@@ -1,3 +1,8 @@
+/**               Widget
+ * 뜻 : 사실상 화면의 모든 UI들은 각각이 모두 Widget임.
+ * 예시 : Text, Row, Padding, ...
+ */
+
 import 'package:flutter/material.dart';
 
 void main() {
