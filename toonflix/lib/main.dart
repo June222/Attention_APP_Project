@@ -71,6 +71,14 @@
 /// 의미 : Widget Tree를 시각적으로 표현하여, 코드의 이해를 돕는다.
 ///
 
+///                       [Reusable Widget]
+/// 뜻 : 반복되는 Widget의 설정
+/// 사용 상황: 매우 비슷한 Widget의 설정을 반복하여 사용하여 코드의 길이가 매우 길어진 경우
+/// 사용 방법 1 : 클래스를 만들어 build의 return 값에 만드려는 Widget을 반환
+/// 사용 방법 2 : Code Action의 Extract Widget을 이용하기
+///
+/// 사용 예시 : lib/Widgets/button.dart 참조
+
 import 'package:flutter/material.dart';
 import 'package:toonflix/widgets/button.dart';
 
@@ -158,6 +166,7 @@ class App extends StatelessWidget {
                     bgColor: Color(0xFFEFAA32),
                     textColor: Colors.black,
                   ),
+                  // Button Widget is same as Container Widget below
                   Container(
                     decoration: BoxDecoration(
                       color: const Color(0xFF1C1D1E),
@@ -178,7 +187,84 @@ class App extends StatelessWidget {
                     ),
                   )
                 ],
-              )
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  const Text(
+                    "Wallets",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 36,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  Text(
+                    "View All",
+                    style: TextStyle(
+                      color: Colors.white.withOpacity(0.8),
+                      fontSize: 18,
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              Container(
+                decoration: BoxDecoration(
+                  color: const Color(0xFF1C1D1E),
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(20),
+                  child: Row(
+                    children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Text(
+                            "Euro",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 30,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              const Text(
+                                "6 428",
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 20,
+                                ),
+                              ),
+                              const SizedBox(
+                                width: 10,
+                              ),
+                              Text(
+                                "EUR",
+                                style: TextStyle(
+                                  color: Colors.white.withOpacity(0.8),
+                                ),
+                              )
+                            ],
+                          ),
+                        ],
+                      )
+                    ],
+                  ),
+                ),
+              ),
             ],
           ),
         ),
