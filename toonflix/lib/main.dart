@@ -44,11 +44,18 @@
  * 사용 에시 1
  * (제공하는 색을 쓰고 싶을 때) :  color: Colors.### #는 색상 이름
  * 사용 예시 2
- * (customized된 색을 쓰고 싶을 때) : color : Color(0xFF######) #는 색번호
+ * (customized된 색을 쓰고 싶을 때) : color: Color(0xFF######) #는 색번호
  * 사용 예시 3
- * (customized된 색을 쓰고 싶을 때) : color : Color.ARGB(255,#,#,#) #는 순서대로 RGB 값
+ * (customized된 색을 쓰고 싶을 때) : color: Color.ARGB(255,#,#,#) #는 순서대로 RGB 값
  * 사용 예시 4
- * (customized된 색을 쓰고 싶을 때) : color : Color(RGBO(#,#,#,$)) #는 순서대로 RGB 값, $는 투명도 값(0~1)
+ * (customized된 색을 쓰고 싶을 때) : color: Color(RGBO(#,#,#,$)) #는 순서대로 RGB 값, $는 투명도 값(0~1)
+ */
+
+/**                     [Container]
+ * 뜻 : 하나의 개별적인 요소를 만들 때 쓰는 Widget
+ * 사용 상황 : 버튼처럼 하나의 독립적인 기능을 하는 요소를 만들고 싶을 때 씀.
+ * 
+ * 사용 예시 : child: Container(_property: ..., child: _Widget)
  */
 
 import 'package:flutter/material.dart';
