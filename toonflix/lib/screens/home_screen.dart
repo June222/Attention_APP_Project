@@ -4,6 +4,31 @@
 /// 사용 방법 : child: Flexible(flex: _rate, child: ...)
 ///
 
+///                   [Timer.periodic()]
+/// 뜻 : 매 주기마다 함수를 호출(callBack)하는 class
+/// 사용 상황: 일정한 주기(시간)마다 함수를 호출하고자 할 때
+///
+/// [중요]
+///   Timer.periodic의 인수로 들어가는 함수는 Timer를 인수로 가져야한다.
+///
+/// 사용 방법 1(함수 선언) :
+///   _functionName(Timer timer){...}
+/// 사용 방법 2(Timer 선언) :
+///   Timer.periodic(duration: Duration(_seconds: ...), _functionName)
+///
+/// 사용 예시(버튼을 눌러서 Timer를 작동):
+///   선언부 : [late] Timer timer;, void buttonPressed();, void onTick(Timer timer);
+///
+///   [IconButton] :
+///     IconButton(onPressed: buttonPressed, icon: ...);
+///
+///   [buttonPressed] :
+///     void buttonPressed() {timer = Timer.periodic(duration: ..., onTick)};
+///
+///   [onTick] :
+///     void onTick(Timer timer) {setState(() {...})};
+///
+
 import 'dart:async';
 import 'package:flutter/material.dart';
 
