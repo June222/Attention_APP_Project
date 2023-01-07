@@ -29,8 +29,30 @@
 /// 사용 예시 : for(var _n in _List) _Widget(_property: ...)
 ///
 
-import "package:flutter/material.dart";
+///                         [Build Context]
+/// 뜻 : Widget 트리를 타고 내려온 부모 Widget들의 정보가 담겨있는 class
+/// 사용 상황 : 부모 Widget의 정보에 접근하려 할 때,
+/// 사용 예시 : 앱의 컨셉에 맞는 테마(theme)을 저장하고, 테마에 맞는 글씨체 등을
+///   반복적으로 사용하고자하는 상황일 때
+///
+/// 사용 방법 1(Theme 생성) : MaterialApp(theme: ...), CupertinoApp(theme: ...)
+///   theme: ThemeData(_textTheme: TextTheme(_titleLarge: TextStyle(color: ...)))
+///
+///   [주의]
+///   Dart는 Null Safety를 지원하기에, context의 _anyTheme의 _anyProperty가
+///   저장이 되어있는지 안 되어있는지 컴파일 이후에 확인이 가능하다.
+///   따라서, Null이 아닐 때, 혹은 Null이 아니다 라는 확신이 필요하다.
+///
+/// 사용 방법 2(Theme 사용) : lib/widgets/mylargetitle.dart 참조
+///   [중요]
+///   color: Theme.or(context)._textTheme._titleLarge[?].color 혹은
+///   color: Theme.or(context)._textTheme._titleLarge[!].color 으로 하여야한다.
+///
+///   [?] : Null인지 아닌지 알 수 없지만, Null이 아닐때만 실행
+///   [!] : Null이 확실히 안된다는 표시
+///
 
+import "package:flutter/material.dart";
 import 'widgets/mylargetitle.dart';
 
 void main() {
