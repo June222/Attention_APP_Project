@@ -36,19 +36,33 @@
 ///   void processResponse(...) async {final response =...}
 ///
 
+import 'dart:convert';
+
 import 'package:http/http.dart' as http;
+import 'package:toonflix/models/webtoon_model.dart';
 
 class ApiService {
   final String baseUrl = "https://webtoon-crawler.nomadcoders.workers.dev";
   final String today = "today";
+  List<WebtoonModel> toonInfoInstances = [];
 
-  void getTodaysToons() async {
+  Future<List<WebtoonModel>> getTodaysToons() async {
     final url = Uri.parse('$baseUrl/$today');
     final response = await http.get(url);
 
     if (response.statusCode == 200) {
-      print(response.body);
-      return;
+      // response.body은 json파일로 저장되어있는 상태
+      // string으로 바꿔주기 위해선 jsonDecode() method를 사용하여야하고,
+      // 사용한 이후의 return 타입은 String에 적힌 대로
+      // 여기선 {A: B}의 형태이므로 Map<String, dynamic>
+      var webtoons = jsonDecode(response.body);
+      for (var webtoon in webtoons) {
+        // 현재 webtoon은 Map<String, dynamic>의 상태
+        var toonInfo = WebtoonModel.fromJson(webtoon);
+        toonInfoInstances.add(toonInfo);
+      }
+
+      return toonInfoInstances;
     }
     throw Error();
   }
