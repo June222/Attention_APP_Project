@@ -67,8 +67,12 @@ class App extends StatefulWidget {
 }
 
 class _AppState extends State<App> {
-  void onClicked() {
-    setState(() {});
+  bool visible = true;
+
+  showRealText() {
+    setState(() {
+      visible = !visible;
+    });
   }
 
   @override
@@ -86,8 +90,12 @@ class _AppState extends State<App> {
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: const [
-              MyLargeTitle(),
+            children: [
+              visible ? const MyLargeTitle() : const Text("Boo yah!"),
+              IconButton(
+                onPressed: showRealText,
+                icon: const Icon(Icons.remove_red_eye_rounded),
+              )
             ],
           ),
         ),
