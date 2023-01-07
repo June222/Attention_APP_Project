@@ -29,6 +29,13 @@
 ///     void onTick(Timer timer) {setState(() {...})};
 ///
 
+///                     [BorderRadius.only()]
+/// 뜻 : BoxDecoration에서 필요한 부분만 둥글게 만드는 method
+///
+/// 사용 예시 : 왼쪽 위만 둥글게 하고싶은 경우
+///   decoration: BoxDecoration(borderRadius: BorderRadius.only(_topLeft: Radius.circular(_value), ..))
+///
+
 import 'dart:async';
 import 'package:flutter/material.dart';
 
@@ -95,8 +102,12 @@ class _HomeScreenState extends State<HomeScreen> {
                 Expanded(
                   child: Container(
                     decoration: BoxDecoration(
-                        color: Theme.of(context).cardColor,
-                        borderRadius: BorderRadius.circular(10)),
+                      color: Theme.of(context).cardColor,
+                      borderRadius: const BorderRadius.only(
+                        topLeft: Radius.circular(30),
+                        topRight: Radius.circular(30),
+                      ),
+                    ),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
