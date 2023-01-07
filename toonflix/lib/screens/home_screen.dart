@@ -36,6 +36,14 @@
 ///   decoration: BoxDecoration(borderRadius: BorderRadius.only(_topLeft: Radius.circular(_value), ..))
 ///
 
+///                         [Duration]
+/// 뜻 : h:m:s:ms의  format을 가지고 있는 class
+/// 사용 상황 : 시분초의 형식으로 String을 만들고 싶을 때
+/// 사용 예시 :
+///   Duration(seconds: _seconds, ...).toString() => H:MM:SS:MS 형식
+///   후에는 .split() 이나 .substring()을 통해서 필요한 부분만 잘라서 쓸 수 있음.
+///
+
 import 'dart:async';
 import 'package:flutter/material.dart';
 
