@@ -50,6 +50,23 @@
 ///
 /// 사용 예시 :
 ///   Row나 Column과 동일일
+///
+
+///                        [ListView.builder()]
+/// 뜻 :
+///   필요한 부분만 index를 이용해서 로드하여 List로 나타내주는 Widget
+///
+/// 의미 :
+///   일반 ListView와 달리 필요한 부분만 로드하여 보여주고,
+///   보이지 않는 부분은 메모리에서 제거하여, 무한 스크롤이 가능하게 한다.
+///
+/// 사용 예시 :
+///   ListView.builder (
+///     itemBuilder: (context, index) {
+///       return Text(snapshot.data![index]._title);
+///     }
+/// )
+///
 
 import 'package:flutter/material.dart';
 import 'package:toonflix/models/webtoon_model.dart';
@@ -78,10 +95,11 @@ class ToonScreen extends StatelessWidget {
         body: FutureBuilder(
           builder: (context, snapshot) {
             return snapshot.hasData
-                ? ListView(
-                    children: [
-                      for (var webtoon in snapshot.data!) Text(webtoon.title),
-                    ],
+                ? ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemBuilder: (context, index) {
+                      return Text(snapshot.data![index].title);
+                    },
                   )
                 : const Center(
                     child: CircularProgressIndicator(),
