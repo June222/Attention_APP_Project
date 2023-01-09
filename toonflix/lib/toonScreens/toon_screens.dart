@@ -68,6 +68,22 @@
 /// )
 ///
 
+///                         [ListView.seperated()]
+/// 뜻 :
+///   표시할 Widget 사이에 Widget을 넣을 수 있는 Widget
+///
+/// 의미 :
+///   ListView, ListView.build로는 할 수 없는,
+///   List의 property 사이에 Widget을 끼울 수 있다.
+///   간단한 예시로 사이사이에 SizedBox를 넣음으로써,
+///   Widget들을 구분할 수 있게 할 수 있다.
+///
+/// 사용 방법 :
+///   LisrView.build() + seperatorBuilder: (context, index) {return _Widget;}
+///
+
+///
+
 import 'package:flutter/material.dart';
 import 'package:toonflix/models/webtoon_model.dart';
 import 'package:toonflix/services/api_service.dart';
@@ -95,11 +111,15 @@ class ToonScreen extends StatelessWidget {
         body: FutureBuilder(
           builder: (context, snapshot) {
             return snapshot.hasData
-                ? ListView.builder(
+                ? ListView.separated(
                     scrollDirection: Axis.horizontal,
+                    itemCount: snapshot.data!.length,
                     itemBuilder: (context, index) {
                       return Text(snapshot.data![index].title);
                     },
+                    separatorBuilder: (context, index) => const SizedBox(
+                      width: 20,
+                    ),
                   )
                 : const Center(
                     child: CircularProgressIndicator(),
