@@ -82,6 +82,12 @@
 ///   LisrView.build() + seperatorBuilder: (context, index) {return _Widget;}
 ///
 
+///                         [CircularProgressIndicator]
+/// 뜻 :
+///   돌아가는 원모양 로딩화면 Widget
+///
+/// 사용 예시 :
+///   Center(child: CurcularProgressIndicator())
 ///
 
 import 'package:flutter/material.dart';
