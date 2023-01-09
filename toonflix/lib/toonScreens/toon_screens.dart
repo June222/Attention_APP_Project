@@ -16,7 +16,14 @@
 /// builder :
 ///   argument로 (BuildContext) context, snapshot을 받는다. (자동)
 ///   - context : BuildContext
-
+///
+///   [중요]
+/// [snapshot] :
+///   FutureBuilder(future: _Future<T>) 이면,
+///   snapshot에는 T가 저장이 되고,
+///   snapshot.hasData를 통해 nullSafety를 확보한 다음,
+///   snapshot.data!.###로 주어진 Type에 맞게 쓰면 된다.
+///
 /// future :
 ///   기다려야하는 대상 (callback 함수의 return 값)
 ///
