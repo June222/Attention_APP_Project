@@ -117,22 +117,55 @@ class ToonScreen extends StatelessWidget {
         body: FutureBuilder(
           builder: (context, snapshot) {
             return snapshot.hasData
-                ? ListView.separated(
-                    scrollDirection: Axis.horizontal,
-                    itemCount: snapshot.data!.length,
-                    itemBuilder: (context, index) {
-                      return Text(snapshot.data![index].title);
-                    },
-                    separatorBuilder: (context, index) => const SizedBox(
-                      width: 20,
-                    ),
-                  )
+                ? makeList(snapshot)
                 : const Center(
                     child: CircularProgressIndicator(),
                   );
           },
           future: webtoons,
         ),
+      ),
+    );
+  }
+
+  ListView makeList(AsyncSnapshot<List<WebtoonModel>> snapshot) {
+    return ListView.separated(
+      scrollDirection: Axis.horizontal,
+      padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 20),
+      itemCount: snapshot.data!.length,
+      itemBuilder: (context, index) {
+        return Column(
+          children: [
+            Container(
+              clipBehavior: Clip.hardEdge,
+              decoration: BoxDecoration(
+                boxShadow: const [
+                  BoxShadow(
+                    color: Colors.black,
+                    blurRadius: 5,
+                    offset: Offset(5, 10),
+                  )
+                ],
+                borderRadius: BorderRadius.circular(20),
+              ),
+              width: 200,
+              child: Image.network(snapshot.data![index].thumb),
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            Text(
+              snapshot.data![index].title,
+              style: const TextStyle(
+                fontSize: 15,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+          ],
+        );
+      },
+      separatorBuilder: (context, index) => const SizedBox(
+        width: 20,
       ),
     );
   }
