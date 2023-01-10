@@ -1,3 +1,23 @@
+///                           [GestureDetector]
+/// 뜻 :
+///   사용자의 입력을 구분하고, 입력을 받아들이는 Widget
+///
+/// 의미 :
+///   Widget을 {터치, 길게 터치, 두 번 터치, ..}할 때,
+///   수행할 작업을 넣은 Widget을 만들 수 있음.
+///
+/// 사용 예시 : 눌렀다 땠을 때, _NewScreen으로 화면 전환
+///   return GestureDetector(
+///     _onTap: () {
+///       Navigator.push(
+///         context, MaterialPageRoute(
+///           builder: (context) => _NewScreen(...)
+///         ) // Navigator.push
+///       ) // MaterailPageRoute
+///     } // onTap
+///   ) // GetureDetector
+///
+
 import 'package:flutter/material.dart';
 import 'package:toonflix/screens/detail_screen.dart';
 
