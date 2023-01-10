@@ -8,7 +8,7 @@
 ///
 /// 사용 예시 : 눌렀다 땠을 때, _NewScreen으로 화면 전환
 ///   return GestureDetector(
-///     _onTap: () {
+///     _onTap: () { // 눌렀다 땠을 때,
 ///       Navigator.push(
 ///         context, MaterialPageRoute(
 ///           builder: (context) => _NewScreen(...)
@@ -16,6 +16,19 @@
 ///       ) // MaterailPageRoute
 ///     } // onTap
 ///   ) // GetureDetector
+///
+
+///                     [Navigator.push()]
+/// 뜻 :
+///   Route와 Route의 Stack을 다루는 API
+///
+/// 의미 :
+///   screen을 호출하여 선형적으로 띄우는 경우에 screen은 자신을 만든
+///   screen이 존재하는데, Navigator는 이것을 관리하여
+///   뒤로가기 버튼등을 만들어줄 수 있다.
+///
+/// 사용 예시 : _NewScreen을 현재 스크린 위에 Android Style로 띄운다.
+///   Navigator.push(context, MaterialPageRoute(builder: (context)=>_NewScreen))
 ///
 
 import 'package:flutter/material.dart';
