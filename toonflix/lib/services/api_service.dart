@@ -39,14 +39,16 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
+import 'package:toonflix/models/webtoon_detail_model.dart';
+import 'package:toonflix/models/webtoon_epsiode_model.dart';
 import 'package:toonflix/models/webtoon_model.dart';
 
 class ApiService {
   final String baseUrl = "https://webtoon-crawler.nomadcoders.workers.dev";
   final String today = "today";
-  List<WebtoonModel> toonInfoInstances = [];
 
   Future<List<WebtoonModel>> getTodaysToons() async {
+    List<WebtoonModel> toonInfoInstances = [];
     final url = Uri.parse('$baseUrl/$today');
     final response = await http.get(url); // response.body은 json파일로 저장되어있는 상태
 
@@ -66,4 +68,52 @@ class ApiService {
       throw Error();
     }
   }
+
+  Future<WebtoonDetailModel> getToonById(String id) async {
+    final url = Uri.parse("$baseUrl/$id");
+    final response = await http.get(url);
+    if (response.statusCode == 200) {
+      var webtoon = jsonDecode(response.body);
+      return WebtoonDetailModel.fromJson(webtoon);
+    } else {
+      throw Error();
+    }
+  }
+
+  Future<List<WebtoonEpisodeModel>> getLatestEpsiodesById(String id) async {
+    List<WebtoonEpisodeModel> epsiodeInstances = [];
+    final url = Uri.parse("$baseUrl/$id/episodes");
+    final response = await http.get(url);
+
+    if (response.statusCode == 200) {
+      var epsiodes = jsonDecode(response.body);
+      for (var episode in epsiodes) {
+        epsiodeInstances.add(WebtoonEpisodeModel.fromJson(episode));
+      }
+      return epsiodeInstances;
+    } else {
+      throw Error();
+    }
+  }
+
+  // Future<List<WebtoonEpisodeModel>> getLatestEpsiodesById(String id) async {
+  //   List<WebtoonEpisodeModel> episodeInstances = [];
+  //   final url = Uri.parse('$baseUrl/$id/epsiodes');
+  //   final response = await http.get(url); // response.body은 json파일로 저장되어있는 상태
+
+  //   if (response.statusCode == 200) {
+  //     // string으로 바꿔주기 위해선 jsonDecode() method를 사용하여야하고,
+  //     // 사용한 이후의 return 타입은 String에 적힌 대로
+  //     // 여기선 {A: B}의 형태이므로 Map<String, dynamic>
+  //     var episodes = jsonDecode(response.body);
+
+  //     for (var episode in episodes) {
+  //       // 현재 webtoon은 Map<String, dynamic>의 상태
+  //       episodeInstances.add(WebtoonEpisodeModel.fromJson(episode));
+  //     }
+  //     return episodeInstances;
+  //   } else {
+  //     throw Error();
+  //   }
+
 }
