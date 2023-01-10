@@ -32,20 +32,23 @@ class DetailScreen extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Container(
-                clipBehavior: Clip.hardEdge,
-                decoration: BoxDecoration(
-                  boxShadow: const [
-                    BoxShadow(
-                      color: Colors.black,
-                      blurRadius: 5,
-                      offset: Offset(5, 10),
-                    )
-                  ],
-                  borderRadius: BorderRadius.circular(20),
+              Hero(
+                tag: id,
+                child: Container(
+                  clipBehavior: Clip.hardEdge,
+                  decoration: BoxDecoration(
+                    boxShadow: const [
+                      BoxShadow(
+                        color: Colors.black,
+                        blurRadius: 5,
+                        offset: Offset(5, 10),
+                      )
+                    ],
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  width: 200,
+                  child: Image.network(thumb),
                 ),
-                width: 200,
-                child: Image.network(thumb),
               ),
             ],
           ),
