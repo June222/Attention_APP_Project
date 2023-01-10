@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:toonflix/models/webtoon_detail_model.dart';
+import 'package:toonflix/models/webtoon_epsiode_model.dart';
+import 'package:toonflix/services/api_service.dart';
 
-class DetailScreen extends StatelessWidget {
+class DetailScreen extends StatefulWidget {
   final String title, thumb, id;
 
   const DetailScreen({
@@ -11,13 +14,28 @@ class DetailScreen extends StatelessWidget {
   });
 
   @override
+  State<DetailScreen> createState() => _DetailScreenState();
+}
+
+class _DetailScreenState extends State<DetailScreen> {
+  late Future<WebtoonDetailModel> webtoon;
+  late Future<List<WebtoonEpisodeModel>> episodes;
+
+  @override
+  void initState() {
+    super.initState();
+    webtoon = ApiService().getToonById(widget.id);
+    episodes = ApiService().getLatestEpsiodesById(widget.id);
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
         backgroundColor: Colors.greenAccent.shade400,
         title: Text(
-          title,
+          widget.title,
           style: const TextStyle(
             fontSize: 20,
             fontWeight: FontWeight.w400,
@@ -33,7 +51,7 @@ class DetailScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Hero(
-                tag: id,
+                tag: widget.id,
                 child: Container(
                   clipBehavior: Clip.hardEdge,
                   decoration: BoxDecoration(
@@ -47,7 +65,7 @@ class DetailScreen extends StatelessWidget {
                     borderRadius: BorderRadius.circular(20),
                   ),
                   width: 200,
-                  child: Image.network(thumb),
+                  child: Image.network(widget.thumb),
                 ),
               ),
             ],
