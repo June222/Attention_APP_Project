@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:toonflix/models/webtoon_detail_model.dart';
 import 'package:toonflix/models/webtoon_epsiode_model.dart';
 import 'package:toonflix/services/api_service.dart';
+import 'package:toonflix/widgets/episode_widget.dart';
 
 class DetailScreen extends StatefulWidget {
   final String title, thumb, id;
@@ -20,18 +22,68 @@ class DetailScreen extends StatefulWidget {
 class _DetailScreenState extends State<DetailScreen> {
   late Future<WebtoonDetailModel> webtoon;
   late Future<List<WebtoonEpisodeModel>> episodes;
+  late SharedPreferences prefs; // Favorite: 1. 선언
+  bool isLiked = false;
+
+  Future initPrefs() async {
+    prefs =
+        await SharedPreferences.getInstance(); // Favorite: 3. 공유 공간 접근 권한 획득
+    final likedToons = prefs.getStringList(
+        "likedToons"); // Favorite: 4. "###"라는 Key를 가진 StringList 가져오기. 없으면 Null 반환
+    if (likedToons != null) {
+      // Favorite: 6. "key"의 저장요소가 존재한다면,
+      if (likedToons.contains(widget.id)) {
+        // Favorite: 7. 현재 화면의 widget.id를 확인하여 있으면
+        setState(() {
+          // Favorite: 9. Rebuild
+          isLiked = true; // Favorite: 8. state 변경
+        });
+      }
+    } else {
+      prefs.setStringList('likedToons', []);
+      // Favorite: 5. 없으면 빈 리스트를 생성하여 공유 저장공간에 저장.
+    }
+  }
 
   @override
   void initState() {
     super.initState();
     webtoon = ApiService().getToonById(widget.id);
     episodes = ApiService().getLatestEpsiodesById(widget.id);
+    initPrefs(); // Favorite: 2. init Prefs
+  }
+
+  void onHeartTap() async {
+    final likedToons = prefs.getStringList("likedToons");
+    if (likedToons != null) {
+      if (isLiked) {
+        likedToons.remove(widget.id);
+      } else {
+        likedToons.add(widget.id);
+      }
+      setState(() {
+        isLiked = !isLiked;
+      });
+      prefs.setStringList("likedToons", likedToons);
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        actions: [
+          IconButton(
+            onPressed: onHeartTap,
+            icon: isLiked
+                ? const Icon(
+                    Icons.favorite_rounded,
+                  )
+                : const Icon(
+                    Icons.favorite_border_outlined,
+                  ),
+          )
+        ],
         centerTitle: true,
         backgroundColor: Colors.greenAccent.shade400,
         title: Text(
@@ -39,6 +91,7 @@ class _DetailScreenState extends State<DetailScreen> {
           style: const TextStyle(
             fontSize: 20,
             fontWeight: FontWeight.w400,
+            color: Colors.white,
           ),
         ),
       ),
@@ -109,7 +162,15 @@ class _DetailScreenState extends State<DetailScreen> {
                 future: episodes,
                 builder: ((context, snapshot) {
                   if (snapshot.hasData) {
-                    return episodeButtons(snapshot);
+                    return Column(
+                      children: [
+                        for (var episode in snapshot.data!)
+                          Episode(
+                            episode: episode,
+                            webtoon_id: widget.id,
+                          ),
+                      ],
+                    );
                   } else {
                     return Container();
                   }
@@ -119,43 +180,6 @@ class _DetailScreenState extends State<DetailScreen> {
           ),
         ),
       ),
-    );
-  }
-
-  Column episodeButtons(AsyncSnapshot<List<WebtoonEpisodeModel>> snapshot) {
-    return Column(
-      children: [
-        for (var episode in snapshot.data!)
-          Container(
-            margin: const EdgeInsets.only(bottom: 10),
-            decoration: BoxDecoration(
-              color: Colors.green.shade300,
-              borderRadius: BorderRadius.circular(20),
-            ),
-            child: Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 20,
-                vertical: 5,
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    episode.title,
-                    style: const TextStyle(
-                      color: Colors.white,
-                      fontSize: 16,
-                    ),
-                  ),
-                  const Icon(
-                    Icons.chevron_right_rounded,
-                    color: Colors.white,
-                  ),
-                ],
-              ),
-            ),
-          ),
-      ],
     );
   }
 }
